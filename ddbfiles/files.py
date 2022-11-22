@@ -9,7 +9,7 @@ from ddbfiles.glob import Glob
 __all__ = ['BASEDIR', 'FILES']
 
 
-BASEDIR = Path('/usr/local/share/sysmon2')
+BASEDIR = Path('/usr/local/share/ddbfiles')
 FILES = {
     'HIDSL': File(
         Glob(BASEDIR, 'HIDSL-*-x86_64.iso'),
