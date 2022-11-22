@@ -9,6 +9,7 @@ setup(
     },
     setup_requires=['setuptools_scm'],
     install_requires=[
+        'configlib',
         'emaillib',
         'flask',
         'his',
@@ -20,6 +21,17 @@ setup(
     maintainer='Richard Neumann',
     maintainer_email='<r dot neumann at homeinfo priod de>',
     packages=['ddbfiles'],
+    entry_points={
+        'console_scripts': [
+            'ddbfiles-notify = ddbfiles.notifications:main'
+        ]
+    },
+    data_files=[
+        ('/usr/lib/systemd/system', [
+            'files/ddbfiles-notify.service',
+            'files/ddbfiles-notify.path'
+        ])
+    ],
     license='GPLv3',
     description='Authorized download for DDB related files.'
 )

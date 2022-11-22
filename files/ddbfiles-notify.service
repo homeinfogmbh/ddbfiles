@@ -1,0 +1,8 @@
+[Unit]
+Description=Notify stakeholders about update DDB files
+After=network.target
+
+[Service]
+User=ddbfiles
+Group=ddbfiles
+ExecStart=/usr/local/bin/ddbfiles-notify

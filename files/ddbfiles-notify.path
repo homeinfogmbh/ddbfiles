@@ -1,0 +1,8 @@
+[Unit]
+Description=Notify stakeholders when DDB files are updated
+
+[Path]
+PathChanged=/usr/local/share/ddbfiles
+
+[Install]
+WantedBy=multi-user.target
