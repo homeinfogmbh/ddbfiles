@@ -4,10 +4,10 @@ from typing import Iterable
 
 from configlib import load_config
 from emaillib import EMail, Mailer
-from his import Account, AccountService, CustomerService, Service
+from his import Account, stakeholders
 
 
-__all__ = ['notify', 'stakeholders']
+__all__ = ['notify']
 
 
 TEXT = '''Sehr geehrte Empfänger:innen,
@@ -26,18 +26,6 @@ def notify(accounts: Iterable[Account]) -> None:
 
     get_mailer().send(
         map(generate_email, map(lambda account: account.email, accounts))
-    )
-
-
-def stakeholders(*, service: str = 'ddbfiles') -> Iterable[Account]:
-    """Select stakeholders of the given service."""
-
-    return Account.select().join(AccountService).join(Service).join_from(
-        Account, CustomerService,
-        on=Account.customer == CustomerService.customer
-    ).join(customer_service := Service.alias()).where(
-        (Service.name == service)
-        & (customer_service.name == service)
     )
 
 
@@ -61,4 +49,4 @@ def get_mailer() -> Mailer:
 def main() -> None:
     """Notify all stakeholders."""
 
-    notify(stakeholders())
+    notify(stakeholders('ddbfiles'))
