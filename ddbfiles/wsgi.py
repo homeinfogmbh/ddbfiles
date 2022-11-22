@@ -32,11 +32,11 @@ def list_files() -> JSON:
 @APPLICATION.route('/<file>/<version>', methods=['GET'], strict_slashes=False)
 @authenticated
 @authorized('ddbfiles')
-def get_file(name: str, version: str) -> Union[JSONMessage, Response]:
+def get_file(file: str, version: str) -> Union[JSONMessage, Response]:
     """Returns the DDB manual."""
 
     try:
-        file = FILES[name]
+        file = FILES[file]
     except KeyError:
         return JSONMessage('No such file.', status=404)
 
