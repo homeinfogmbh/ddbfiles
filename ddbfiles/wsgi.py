@@ -25,7 +25,7 @@ def list_files() -> JSON:
     """Returns the DDB manual."""
 
     return JSON([{
-        name: list(file.versions[0]) for name, file in FILES.items()
+        name: list(dict(file.versions)) for name, file in FILES.items()
     }])
 
 
