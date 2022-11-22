@@ -55,7 +55,7 @@ def generate_email(recipient: str) -> EMail:
 def get_mailer() -> Mailer:
     """Return the automailer."""
 
-    return Mailer.from_config(load_config('ddbfiles.cfg'))
+    return Mailer.from_config(load_config('ddbfiles.conf'))
 
 
 def main() -> None:
