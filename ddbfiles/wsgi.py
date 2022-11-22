@@ -24,7 +24,9 @@ NO_SUCH_FILE = JSONMessage('No such file', status=404)
 def list_files() -> JSON:
     """Returns the DDB manual."""
 
-    return JSON([{name: list(file.versions) for name, file in FILES.items()}])
+    return JSON([{
+        name: list(file.versions[0]) for name, file in FILES.items()
+    }])
 
 
 @APPLICATION.route('/<file>/<version>', methods=['GET'], strict_slashes=False)
@@ -36,15 +38,15 @@ def get_file(name: str, version: str) -> Union[JSONMessage, Response]:
     try:
         file = FILES[name]
     except KeyError:
-        return JSONMessage('No such file', status=404)
+        return JSONMessage('No such file.', status=404)
 
     try:
-        filename = file.version(None if version == 'latest' else version)
+        filename = file.version(version)
     except ValueError:
-        return JSONMessage('No such version', status=404)
+        return JSONMessage('No such version.', status=404)
 
     if not (file := BASEDIR / filename).is_file():
-        return JSONMessage('File not found', status=404)
+        return JSONMessage('File not found.', status=404)
 
     return Response(
         stream(file),
