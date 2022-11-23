@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch for new DDB files
+After=network.target
+
+[Service]
+User=ddbfiles
+Group=ddbfiles
+WorkingDirectory=/usr/local/share/ddbfiles
+ExecStart=/usr/local/bin/ddbfiles-watchdog
