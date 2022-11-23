@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily cleanup of old DDB files
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=12h
+
+[Install]
+WantedBy=timers.target

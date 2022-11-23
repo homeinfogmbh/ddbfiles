@@ -23,11 +23,14 @@ setup(
     packages=['ddbfiles'],
     entry_points={
         'console_scripts': [
+            'ddbfiles-cleanup = ddbfiles.cleanup:main',
             'ddbfiles-notify = ddbfiles.notifications:main'
         ]
     },
     data_files=[
         ('/usr/lib/systemd/system', [
+            'files/ddbfiles-cleanup.service',
+            'files/ddbfiles-cleanup.timer',
             'files/ddbfiles-watchdog.service'
         ])
     ],

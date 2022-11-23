@@ -1,0 +1,8 @@
+[Unit]
+Description=Delete old DDB files
+After=network.target
+
+[Service]
+User=ddbfiles
+Group=ddbfiles
+ExecStart=/usr/local/bin/ddbfiles-cleanup
