@@ -15,7 +15,8 @@ __all__ = ['notify']
 TEXT_TEMPLATE = '''Sehr geehrte Empfänger:innen,
 
 es gibt neue DDB-Dateien zum herunter laden:
-{filename}
+
+* {filename}
 
 Mit freundlichen Grüßen
 
