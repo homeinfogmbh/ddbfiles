@@ -28,9 +28,11 @@ setup(
     },
     data_files=[
         ('/usr/lib/systemd/system', [
-            'files/ddbfiles-notify.service',
-            'files/ddbfiles-notify.path'
+            'files/ddbfiles-watchdog.service'
         ])
+    ],
+    scripts=[
+        'files/ddbfiles-watchdog'
     ],
     license='GPLv3',
     description='Authorized download for DDB related files.'
