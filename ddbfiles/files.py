@@ -5,8 +5,7 @@ from pathlib import Path
 from ddbfiles.file import File
 from ddbfiles.glob import Glob
 
-
-__all__ = ['BASEDIR', 'FILES']
+__all__ = ['FILES']
 
 
 BASEDIR = Path('/usr/local/share/ddbfiles')

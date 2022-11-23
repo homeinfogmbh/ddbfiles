@@ -3,13 +3,11 @@
 from typing import Union
 
 from flask import Response
-
 from his import Application, authenticated, authorized
 from wsgilib import JSON, JSONMessage
 
-from ddbfiles.files import BASEDIR, FILES
+from ddbfiles.files import FILES
 from ddbfiles.stream import stream
-
 
 __all__ = ['APPLICATION']
 
@@ -41,15 +39,15 @@ def get_file(file: str, version: str) -> Union[JSONMessage, Response]:
         return JSONMessage('No such file.', status=404)
 
     try:
-        filename = file.version(version)
+        path = file.version(version)
     except ValueError:
         return JSONMessage('No such version.', status=404)
 
-    if not (file := BASEDIR / filename).is_file():
+    if not path.is_file():
         return JSONMessage('File not found.', status=404)
 
     return Response(
-        stream(file),
+        stream(path),
         mimetype='application/octet-stream',
-        headers={'Content-Disposition': f'filename="{file.name}"'}
+        headers={'Content-Disposition': f'filename="{path.name}"'}
     )
