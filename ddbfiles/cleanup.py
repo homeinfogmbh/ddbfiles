@@ -8,7 +8,7 @@ __all__ = ['main']
 
 
 def get_args(description: str = __doc__) -> Namespace:
-    """Returns the parsed command line arguments."""
+    """Return the parsed command line arguments."""
 
     parser = ArgumentParser(description=description)
     parser.add_argument(
