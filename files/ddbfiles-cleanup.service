@@ -3,4 +3,6 @@ Description=Delete old DDB files
 After=network.target
 
 [Service]
+ProtectSystem=strict
+ReadWritePaths=/usr/local/share/ddbfiles
 ExecStart=/usr/local/bin/ddbfiles-cleanup
