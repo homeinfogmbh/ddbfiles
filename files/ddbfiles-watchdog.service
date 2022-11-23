@@ -7,3 +7,6 @@ User=ddbfiles
 Group=ddbfiles
 WorkingDirectory=/usr/local/share/ddbfiles
 ExecStart=/usr/local/bin/ddbfiles-watchdog
+
+[Install]
+WantedBy=multi-user.target
