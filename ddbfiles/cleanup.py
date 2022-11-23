@@ -4,7 +4,6 @@ from argparse import ArgumentParser, Namespace
 
 from ddbfiles.files import BASEDIR, FILES
 
-
 __all__ = ['main']
 
 
@@ -25,5 +24,5 @@ def main() -> None:
     args = get_args()
 
     for file in FILES.values():
-        for _, filename in sorted(file.versions)[-args.keep:]:
+        for _, filename in sorted(file.versions)[:-args.keep]:
             BASEDIR.joinpath(filename).unlink()
