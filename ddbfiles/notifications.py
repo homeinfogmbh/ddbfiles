@@ -1,22 +1,25 @@
 """Notifications about file updates."""
 
 from argparse import ArgumentParser, Namespace
+from functools import partial
 from typing import Iterable
 
 from configlib import load_config
 from emaillib import EMail, Mailer
-from functools import partial
 from his import Account, stakeholders
-
 
 __all__ = ['notify']
 
 
-TEXT_TEMPLATE = '''Sehr geehrte Empfänger:innen,
+DOWNLOAD_URL = 'https://sysmon2.homeinfo.de/dashboard.html '
+TEXT_TEMPLATE = f'''Sehr geehrte Empfänger:innen,
 
-es gibt neue DDB-Dateien zum herunter laden:
+es gibt eine neu DDB-Datei zum herunter laden:
 
-* {filename}
+* {{filename}}
+
+Sie können die Datei unter {DOWNLOAD_URL}
+herunter laden.
 
 Mit freundlichen Grüßen
 
