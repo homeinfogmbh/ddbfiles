@@ -49,5 +49,8 @@ def get_file(file: str, version: str) -> Union[JSONMessage, Response]:
     return Response(
         stream(path),
         mimetype='application/octet-stream',
-        headers={'Content-Disposition': f'filename="{path.name}"'}
+        headers={
+            'Content-Disposition': f'filename="{path.name}"',
+            'Content-Length': path.stat().st_size
+        }
     )
