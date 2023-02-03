@@ -43,7 +43,7 @@ def generate_email(recipient: str, filename: str) -> EMail:
 
     return EMail(
         subject='Neue DDB Dateien',
-        sender='noreply@homeifno.de',
+        sender='noreply@homeinfo.de',
         recipient=recipient,
         plain=TEXT_TEMPLATE.format(filename=filename)
     )
