@@ -1,2 +1,2 @@
 # ddbfiles
-Authorized download API for file regarding the DDB
+Authorized download API for documentation and image files regarding the DDB project.
