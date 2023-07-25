@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Iterator, NamedTuple
 
 
-__all__ = ['Glob']
+__all__ = ["Glob"]
 
 
 class Glob(NamedTuple):

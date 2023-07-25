@@ -3,40 +3,32 @@
 from setuptools import setup
 
 setup(
-    name='ddbfiles',
-    use_scm_version={
-        "local_scheme": "node-and-timestamp"
-    },
-    setup_requires=['setuptools_scm'],
-    install_requires=[
-        'configlib',
-        'emaillib',
-        'flask',
-        'his',
-        'setuptools',
-        'wsgilib'
-    ],
-    author='HOMEINFO - Digitale Informationssysteme GmbH',
-    author_email='<info at homeinfo dot de>',
-    maintainer='Richard Neumann',
-    maintainer_email='<r dot neumann at homeinfo priod de>',
-    packages=['ddbfiles'],
+    name="ddbfiles",
+    use_scm_version={"local_scheme": "node-and-timestamp"},
+    setup_requires=["setuptools_scm"],
+    install_requires=["configlib", "emaillib", "flask", "his", "setuptools", "wsgilib"],
+    author="HOMEINFO - Digitale Informationssysteme GmbH",
+    author_email="<info at homeinfo dot de>",
+    maintainer="Richard Neumann",
+    maintainer_email="<r dot neumann at homeinfo priod de>",
+    packages=["ddbfiles"],
     entry_points={
-        'console_scripts': [
-            'ddbfiles-cleanup = ddbfiles.cleanup:main',
-            'ddbfiles-notify = ddbfiles.notifications:main'
+        "console_scripts": [
+            "ddbfiles-cleanup = ddbfiles.cleanup:main",
+            "ddbfiles-notify = ddbfiles.notifications:main",
         ]
     },
     data_files=[
-        ('/usr/lib/systemd/system', [
-            'files/ddbfiles-cleanup.service',
-            'files/ddbfiles-cleanup.timer',
-            'files/ddbfiles-watchdog.service'
-        ])
+        (
+            "/usr/lib/systemd/system",
+            [
+                "files/ddbfiles-cleanup.service",
+                "files/ddbfiles-cleanup.timer",
+                "files/ddbfiles-watchdog.service",
+            ],
+        )
     ],
-    scripts=[
-        'files/ddbfiles-watchdog'
-    ],
-    license='GPLv3',
-    description='Authorized download for DDB related files.'
+    scripts=["files/ddbfiles-watchdog"],
+    license="GPLv3",
+    description="Authorized download for DDB related files.",
 )

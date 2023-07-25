@@ -6,7 +6,7 @@ from re import fullmatch
 from typing import Iterable, Iterator, NamedTuple, Optional
 
 
-__all__ = ['File', 'Version']
+__all__ = ["File", "Version"]
 
 
 class Version(NamedTuple):
@@ -36,7 +36,7 @@ class File(NamedTuple):
             if version == requested:
                 return path
 
-        raise ValueError('No such version.')
+        raise ValueError("No such version.")
 
     def _regex_versions(self) -> Iterator[Version]:
         """Yield versions by regular expression."""
@@ -48,6 +48,5 @@ class File(NamedTuple):
         """Yield versions by modification time."""
         for path in self.paths:
             yield Version(
-                datetime.fromtimestamp(path.stat().st_mtime).isoformat(),
-                path
+                datetime.fromtimestamp(path.stat().st_mtime).isoformat(), path
             )
